@@ -1,0 +1,51 @@
+before_script:
+#  - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
+#  - ruby -v
+#  - which ruby
+#  - gem install bundler --no-ri --no-rdoc
+#  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+#
+#rspec:
+#  script:
+#    - bundle exec rspec
+#  tags:
+#    - ttt
+#
+#rubocop:
+#  script:
+#    - bundle exec rubocop
+#  tags:
+#    - ttt
+
+rtest:
+  script:
+    - pwd
+    - ls -l
+    - touch job1.jj
+#    - cp job1.jj build/
+    - echo 'test1' >> job1.jj
+  tags:
+    - ttt
+  artifacts:
+    paths:
+    - job1.jj
+
+rtest2:
+  script:
+  - echo 'test2' >> job2.jj
+  tags:
+    - ttt
+  artifacts:
+    paths:
+    - job2.jj
+
+deploy:
+  stage: deploy
+  script:
+    - cat job1.jj >> job2.jj
+    - rm job1.jj
+    - cat job2.jj
+    - ls -l
+  tags:
+    - ttt
+
