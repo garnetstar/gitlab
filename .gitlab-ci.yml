@@ -25,7 +25,7 @@ rtest:
 #    - cp job1.jj build/
     - echo 'test1' >> job1.jj
   tags:
-    - ttt
+    - tag1
   artifacts:
     paths:
     - job1.jj
@@ -34,7 +34,7 @@ rtest2:
   script:
   - echo 'test2' >> job2.jj
   tags:
-    - ttt
+    - tag1
   artifacts:
     paths:
     - job2.jj
@@ -43,9 +43,9 @@ deploy:
   stage: deploy
   script:
     - cat job1.jj >> job2.jj
-    - rm job1.jj
+    - rm job1.jjsdfasdf
     - cat job2.jj
     - ls -l
   tags:
-    - ttt
+    - tag1
 

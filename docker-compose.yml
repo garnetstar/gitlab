@@ -6,7 +6,7 @@ services:
     hostname: 'localhost'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab'
+        external_url 'https://gitlab'
         # Add any other gitlab.rb configuration here, each on its own line
     ports:
       - '80:80'
@@ -16,3 +16,13 @@ services:
       - './config:/etc/gitlab'
       - './logs:/var/log/gitlab'
       - './data:/var/opt/gitlab'
+  runner:
+    image: gitlab/gitlab-runner:latest
+    volumes:
+      - './runner/config:/etc/gitlab-runner'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      #sdileni ssl certifikatu
+      - './config/ssl:/etc/ssl/certs'
+    extra_hosts:
+      - "gitlab:172.17.0.1"
+    restart: always
