@@ -1,0 +1,16 @@
+[[runners]]
+  name = "Bolt 1"
+  url = "https://gitlab"
+  token = "cba129cdc4c52ff720cef848dd358f"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "php:7.1.8-apache"
+    privileged = false
+    disable_cache = false
+    volumes = ["/cache"]
+    extra_hosts = ["gitlab:172.17.0.1"]
+    shm_size = 0
+  [runners.cache]
+    [runners.cache.s3]
+    [runners.cache.gcs]

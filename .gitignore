@@ -1,4 +1,4 @@
 .idea/*
-data/
-config/
-logs/
+gitlab-ci/data/
+gitlab-ci/config/
+gitlab-ci/logs/
