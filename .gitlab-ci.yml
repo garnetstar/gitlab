@@ -43,9 +43,10 @@ deploy:
   stage: deploy
   script:
     - cat job1.jj >> job2.jj
-    - rm job1.jjsdfasdf
+    - rm job1.jj
     - cat job2.jj
     - ls -l
+    - php -i
   tags:
     - tag1
 
